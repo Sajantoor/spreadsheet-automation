@@ -47,6 +47,8 @@ def createWorksheet(name):
 
 i = 0
 for team in teamNames:
+    team = team.upper()
+
     if team in data:
         data[team] = str(float(data[team]) + float(averages[i]))
         freq[team] = freq[team] + 1
