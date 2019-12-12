@@ -10,8 +10,8 @@ pp = pprint.PrettyPrinter()
 scope = ['https://spreadsheets.google.com/feeds', 'https://www.googleapis.com/auth/drive']
 creds = ServiceAccountCredentials.from_json_keyfile_name('client_secret.json', scope)
 client = gspread.authorize(creds)
-
-spreadsheetName = 'Python Automation Test Sheet'
+print("Connected to Google API")
+spreadsheetName = 'Tower Takeover 4549A Scouting'
 sh = client.open(spreadsheetName)
 sheet = sh.sheet1
 teamNames = sheet.col_values(2)
@@ -21,6 +21,7 @@ data = {}
 freq = {}
 
 def createWorksheet(name):
+    print("Creating worksheet...")
     try:
         worksheet = sh.add_worksheet(title=name, rows="200", cols="5")
     except:
@@ -45,6 +46,7 @@ def createWorksheet(name):
     format_cell_ranges(worksheet, [('A1:B1', fmt)])
     set_frozen(worksheet, rows=1)
 
+print("Running calculations...")
 i = 0
 for team in teamNames:
     team = team.upper()
@@ -62,6 +64,7 @@ for count in freq:
     if (int(freq[count]) > 1):
         data[count] = str(float(data[count]) / int(freq[count]))
 
+print("Finished calculations...")
 createWorksheet("Pivot Table")
 
 print("Data added!")
