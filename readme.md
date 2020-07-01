@@ -1,5 +1,4 @@
 # Python Spreadsheet Automation
-## Automating Spreadsheet Stuffs with Python
 
 ### Problem
 > In Robotics, our scouts needed to automate the pivot table process due to it taking too long to do manually (we have limited time after scouting process is complete). 
